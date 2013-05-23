@@ -7,7 +7,11 @@ An [Écoute][ecoute-core] data handler module that parses Markdown formatted fil
 
 This project includes the following third party modules:
 
-  * Robotskirt by ...
+  * The markdown is transformed to HTML using [Robotskirt][robotskirt] by [Ben Mills][ben-milles].
+
+[robotskirt]: http://benmills.org/robotskirt
+[ben-milles]: https://github.com/benmills
+
 
 The creators of these modules does not have anything to do with the File System Source for Écoute-project besides that, please direct all the issues and bugs to the right channels. The bugtracker for this project is located here: [Markdown with Byline Metadata Data Handler for Écoute Issue tracker][bugtracker].
 
