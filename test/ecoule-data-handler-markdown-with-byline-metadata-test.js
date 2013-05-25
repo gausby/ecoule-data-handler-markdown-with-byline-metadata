@@ -3,8 +3,8 @@
 'use strict';
 
 var buster = require('buster'),
-    Ecoute = require('ecoute'),
-    DataHandler = require('../lib/ecoute-data-handler-markdown-with-byline-metadata')
+    Ecoule = require('ecoule'),
+    DataHandler = require('../lib/ecoule-data-handler-markdown-with-byline-metadata')
 ;
 
 var assert = buster.assertions.assert;

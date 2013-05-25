@@ -1,9 +1,9 @@
-Markdown with Byline Metadata Data Handler for Écoute
+Markdown with Byline Metadata Data Handler for Écoule
 =====================================================
 
-An [Écoute][ecoute-core] data handler module that parses Markdown formatted files into HTML while finding metadata stored in the header section of the file.
+An [Écoule][ecoule-core] data handler module that parses Markdown formatted files into HTML while finding metadata stored in the header section of the file.
 
-[ecoute-core]: https://github.com/gausby/ecoute
+[ecoule-core]: https://github.com/gausby/ecoule
 
 This project includes the following third party modules:
 
@@ -13,17 +13,17 @@ This project includes the following third party modules:
 [ben-milles]: https://github.com/benmills
 
 
-The creators of these modules does not have anything to do with the File System Source for Écoute-project besides that, please direct all the issues and bugs to the right channels. The bugtracker for this project is located here: [Markdown with Byline Metadata Data Handler for Écoute Issue tracker][bugtracker].
+The creators of these modules does not have anything to do with the File System Source for Écoule-project besides that, please direct all the issues and bugs to the right channels. The bugtracker for this project is located here: [Markdown with Byline Metadata Data Handler for Écoule Issue tracker][bugtracker].
 
 
 ## Usage
-This is a Source module for the Écoute-engine, and should be included in the source section of an Écoute-configuration.
+This is a Source module for the Écoule-engine, and should be included in the source section of an Écoule-configuration.
 
-    var Ecoute = require('ecoute'),
-        mdHandler = require('ecoute-data-handler-markdown-with-byline-metadata')
+    var Ecoule = require('ecoule'),
+        mdHandler = require('ecoule-data-handler-markdown-with-byline-metadata')
     ;
 
-    var myEcoute({
+    var myEcoule({
         'data-handlers': [
             mdHandler({
                 // configration
@@ -36,7 +36,7 @@ This is a Source module for the Écoute-engine, and should be included in the so
 ### Configuration
 The configuration passed to the file system source is an object with the following keys.
 
-  * `title` The title of the source used internally in Écoute.
+  * `title` The title of the source used internally in Écoule.
 
 Further configuration parameters has been planed, and the names of these configuration keys could change in a future release.
 
@@ -84,4 +84,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-[bugtracker]: https://github.com/gausby/ecoute-source-file-system/issues
+[bugtracker]: https://github.com/gausby/ecoule-source-file-system/issues
