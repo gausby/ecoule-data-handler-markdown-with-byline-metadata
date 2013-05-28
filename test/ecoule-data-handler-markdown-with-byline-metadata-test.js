@@ -1,10 +1,9 @@
-/*jslint maxlen:140*/
 /* global require */
 'use strict';
 
 var buster = require('buster'),
     Ecoule = require('ecoule'),
-    DataHandler = require('../lib/ecoule-data-handler-markdown-with-byline-metadata')
+    dataHandler = require('../lib/ecoule-data-handler-markdown-with-byline-metadata')
 ;
 
 var assert = buster.assertions.assert;
@@ -13,7 +12,7 @@ var refute = buster.assertions.refute;
 
 buster.testCase('A data handler', {
     'should implement an initialize function': function () {
-        var test = DataHandler();
+        var test = dataHandler();
 
         assert.isFunction(test.initialize);
     }
@@ -21,7 +20,7 @@ buster.testCase('A data handler', {
 
 buster.testCase('initialization', {
     'should call its callback method at some point': function (done) {
-        var test = DataHandler({});
+        var test = dataHandler({});
 
         test.initialize(function(err) {
             refute.defined(err);
@@ -32,7 +31,9 @@ buster.testCase('initialization', {
 
 buster.testCase('execute', {
     'should transform markdown to html': function (done) {
-        var test = DataHandler({});
+        var test = dataHandler({
+            output: 'html'
+        });
 
         var obj = {
             raw: '# Foo\n**bar**'
@@ -40,7 +41,44 @@ buster.testCase('execute', {
 
         test.initialize(function() {
             test.execute(obj, function(err) {
-                assert.defined(obj.processed.html);
+                assert.defined(obj.html);
+                assert.equals('<p><strong>bar</strong></p>\n', obj.html);
+                done();
+            });
+        });
+    },
+
+    'should accept custom metadata fields': function (done) {
+        var rating = function () {
+            var pattern = new RegExp(' {2}Rating: ([0-9]{1,2})');
+
+            return function (subject, done) {
+                var rating = pattern.exec(subject);
+
+                if (rating && rating[1]) {
+                    rating = rating[1];
+                }
+                else {
+                    rating = undefined;
+                }
+                done(undefined, rating);
+            };
+        };
+
+        var test = dataHandler({
+            metadata: {
+                rating: rating
+            }
+        });
+
+        var obj = {
+            raw: '# Foo\n  Rating: 10\nBar'
+        };
+
+        test.initialize(function() {
+            test.execute(obj, function(err) {
+                assert.defined(obj.rating);
+                assert.equals(obj.rating, 10);
                 done();
             });
         });
