@@ -67,7 +67,7 @@ buster.testCase('execute', {
 
         var test = dataHandler({
             metadata: {
-                rating: rating
+                stars: rating
             }
         });
 
@@ -77,12 +77,35 @@ buster.testCase('execute', {
 
         test.initialize(function() {
             test.execute(obj, function(err) {
-                assert.defined(obj.rating);
-                assert.equals(obj.rating, 10);
+                assert.defined(obj.stars);
+                assert.equals(obj.stars, 10);
                 done();
             });
         });
     },
+
+    'should accept custom key name to predefined metadata field fetchers': function (done) {
+        var test = dataHandler({
+            metadata: {
+                'authors.writers': 'authors'
+            }
+        });
+
+        var obj = {
+            raw: '# Foo\n  By John Doe\nBar'
+        };
+
+        test.initialize(function() {
+            test.execute(obj, function(err) {
+                assert.defined(obj.authors);
+                assert.defined(obj.authors.writers);
+                assert.equals(obj.authors.writers.toString(), 'John Doe');
+
+                done();
+            });
+        });
+    },
+
     'should accept a custom input data field with markdown data': function (done) {
         var test = dataHandler({
             input: 'input',
