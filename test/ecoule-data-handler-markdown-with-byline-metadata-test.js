@@ -82,5 +82,24 @@ buster.testCase('execute', {
                 done();
             });
         });
-    }
+    },
+    'should accept a custom input data field with markdown data': function (done) {
+        var test = dataHandler({
+            input: 'input',
+            output: 'output'
+        });
+
+        var obj = {
+            input: '# Foo\nBar Baz\n'
+        };
+
+        test.initialize(function() {
+            test.execute(obj, function(err) {
+                assert.defined(obj.output);
+                assert.equals(obj.output, '<p>Bar Baz</p>\n');
+                done();
+            });
+        });
+    },
+    '// should be able to store custom keys in objects': function (done) {}
 });
