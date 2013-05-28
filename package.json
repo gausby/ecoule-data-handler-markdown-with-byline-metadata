@@ -1,6 +1,6 @@
 {
     "name": "ecoule-data-handler-markdown-with-byline-metadata",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "An Écoule data handler module that parses Markdown formatted files into HTML while finding metadata stored in the header section of the file.",
     "author": "Martin Gausby <martin@gausby.dk>",
     "repository": "git@github.com:gausby/ecoule-data-handler-markdown-with-byline-metadata.git",
